@@ -1,6 +1,7 @@
 import { CartBottom, PriceContainer } from "./style";
 
-function CartTotal({ cartTotal }) {
+function CartTotal({ currentSale, cartTotal, totalPrice }) {
+  totalPrice(currentSale);
   return (
     <>
       <CartBottom>

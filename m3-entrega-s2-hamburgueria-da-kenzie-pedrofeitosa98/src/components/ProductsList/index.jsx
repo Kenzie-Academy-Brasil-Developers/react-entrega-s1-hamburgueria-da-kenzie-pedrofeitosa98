@@ -1,12 +1,16 @@
 import Product from "../Product";
 import ListContainer from "./style";
 
-function ProductsList({ products, addToCard }) {
+function ProductsList({ products, addToCart }) {
   return (
     <>
       <ListContainer>
-        {products.map((product) => (
-          <Product key={product.id} product={product} addToCard={addToCard} />
+        {products.map((product, index) => (
+          <Product
+            key={index}
+            product={product}
+            addToCart={addToCart}
+          />
         ))}
       </ListContainer>
     </>

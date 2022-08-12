@@ -20,13 +20,34 @@ function App() {
       .catch((err) => console.log(err));
   }, []);
 
+  function addToCart(product) {
+    const newSale = {
+      name: product.name,
+      category: product.category,
+      price: product.price,
+      img: product.img,
+    };
+    setCurrentSale([...currentSale, newSale]);
+  }
+
+  function totalPrice(currentSale) {
+    const totalValue = currentSale.reduce((accum, product) => {
+      return product.price + accum;
+    }, 0);
+    setCartTotal(totalValue);
+  }
+
   return (
     <>
       <GlobalStyle />
       <Header />
       <main>
-        <ProductsList products={products} />
-        <Cart currentSale={currentSale} cartTotal={cartTotal} />
+        <ProductsList products={products} addToCart={addToCart} />
+        <Cart
+          currentSale={currentSale}
+          cartTotal={cartTotal}
+          totalPrice={totalPrice}
+        />
       </main>
     </>
   );

@@ -7,6 +7,16 @@ const CartCard = styled.div`
   justify-content: space-between;
   align-items: center;
   border-radius: 5px;
+
+  .cart-remove {
+    cursor: pointer;
+    transition: 0.3s;
+  }
+
+  .cart-remove:hover {
+    text-decoration: underline;
+    color: var(--gray-100);
+  }
 `
 
 const CartCardInfos = styled.div`

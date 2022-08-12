@@ -1,7 +1,8 @@
 import { CartContainer, CartHeader, CartEmpty, CartList } from "./style";
+import CartProduct from "../CartProduct";
 import CartTotal from "../CartTotal";
 
-function Cart({ currentSale, cartTotal }) {
+function Cart({ currentSale, cartTotal, totalPrice }) {
   return (
     <>
       <CartContainer>
@@ -10,8 +11,16 @@ function Cart({ currentSale, cartTotal }) {
         </CartHeader>
         {currentSale.length ? (
           <>
-            <CartList></CartList>
-            <CartTotal cartTotal={cartTotal} />
+            <CartList>
+              {currentSale.map((sale) => (
+                <CartProduct key={sale.id} sale={sale} />
+              ))}
+            </CartList>
+            <CartTotal
+              currentSale={currentSale}
+              cartTotal={cartTotal}
+              totalPrice={totalPrice}
+            />
           </>
         ) : (
           <CartEmpty>

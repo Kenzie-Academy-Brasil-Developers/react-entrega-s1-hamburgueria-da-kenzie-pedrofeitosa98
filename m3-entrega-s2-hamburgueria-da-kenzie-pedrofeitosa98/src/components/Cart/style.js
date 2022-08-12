@@ -42,6 +42,7 @@ const CartList = styled.div`
   gap: 1.25rem;
   overflow-y: scroll;
   background-color: var(--gray-0);
+  padding: 1.25rem 0.625rem;
 `
 
 export { CartContainer, CartHeader, CartEmpty, CartList }
