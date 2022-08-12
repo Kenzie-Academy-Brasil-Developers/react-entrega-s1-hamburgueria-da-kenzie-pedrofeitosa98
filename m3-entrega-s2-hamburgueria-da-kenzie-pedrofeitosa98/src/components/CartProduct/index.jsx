@@ -1,6 +1,6 @@
 import { CartCard, CartCardInfos, CartCardImage } from "./style";
 
-function CartProduct({ sale }) {
+function CartProduct({ sale, removeProduct }) {
   return (
     <>
       <CartCard>
@@ -9,7 +9,9 @@ function CartProduct({ sale }) {
           <h4 className="heading">{sale.name}</h4>
           <p className="caption">{sale.category}</p>
         </CartCardInfos>
-        <span className="cart-remove">Remover</span>
+        <span className="cart-remove" onClick={() => removeProduct(sale)}>
+          Remover
+        </span>
       </CartCard>
     </>
   );

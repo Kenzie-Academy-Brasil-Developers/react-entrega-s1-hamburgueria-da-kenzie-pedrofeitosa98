@@ -21,13 +21,32 @@ function App() {
   }, []);
 
   function addToCart(product) {
-    const newSale = {
-      name: product.name,
-      category: product.category,
-      price: product.price,
-      img: product.img,
-    };
-    setCurrentSale([...currentSale, newSale]);
+    if (
+      currentSale.some(
+        (elem) => JSON.stringify(product) === JSON.stringify(elem)
+      )
+    ) {
+      alert("Opa, produto já incluso!");
+    } else {
+      const newSale = {
+        id: product.id,
+        name: product.name,
+        category: product.category,
+        price: product.price,
+        img: product.img,
+      };
+      setCurrentSale([...currentSale, newSale]);
+    }
+  }
+
+  function removeProduct(product) {
+    const cartFiltered = currentSale.filter((sale) => sale !== product);
+    setCurrentSale(cartFiltered);
+  }
+
+  function removeSale() {
+    const emptySale = [];
+    setCurrentSale(emptySale);
   }
 
   function totalPrice(currentSale) {
@@ -47,6 +66,8 @@ function App() {
           currentSale={currentSale}
           cartTotal={cartTotal}
           totalPrice={totalPrice}
+          removeProduct={removeProduct}
+          removeSale={removeSale}
         />
       </main>
     </>

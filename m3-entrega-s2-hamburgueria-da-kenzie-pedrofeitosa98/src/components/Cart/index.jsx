@@ -2,7 +2,13 @@ import { CartContainer, CartHeader, CartEmpty, CartList } from "./style";
 import CartProduct from "../CartProduct";
 import CartTotal from "../CartTotal";
 
-function Cart({ currentSale, cartTotal, totalPrice }) {
+function Cart({
+  currentSale,
+  cartTotal,
+  totalPrice,
+  removeProduct,
+  removeSale,
+}) {
   return (
     <>
       <CartContainer>
@@ -12,14 +18,19 @@ function Cart({ currentSale, cartTotal, totalPrice }) {
         {currentSale.length ? (
           <>
             <CartList>
-              {currentSale.map((sale) => (
-                <CartProduct key={sale.id} sale={sale} />
+              {currentSale.map((sale, index) => (
+                <CartProduct
+                  key={index}
+                  sale={sale}
+                  removeProduct={removeProduct}
+                />
               ))}
             </CartList>
             <CartTotal
               currentSale={currentSale}
               cartTotal={cartTotal}
               totalPrice={totalPrice}
+              removeSale={removeSale}
             />
           </>
         ) : (

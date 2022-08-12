@@ -5,12 +5,8 @@ function ProductsList({ products, addToCart }) {
   return (
     <>
       <ListContainer>
-        {products.map((product, index) => (
-          <Product
-            key={index}
-            product={product}
-            addToCart={addToCart}
-          />
+        {products.map((product) => (
+          <Product key={product.id} product={product} addToCart={addToCart} />
         ))}
       </ListContainer>
     </>
