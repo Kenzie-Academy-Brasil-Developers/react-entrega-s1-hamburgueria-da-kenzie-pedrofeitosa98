@@ -54,6 +54,12 @@ const GlobalStyle = createGlobalStyle`
     justify-content: space-between;
     gap: 1rem;
   }
+  @media (max-width: 700px) {
+   main {
+    flex-direction: column;
+    align-items: center;
+   } 
+  }
 
   body,
   input,
